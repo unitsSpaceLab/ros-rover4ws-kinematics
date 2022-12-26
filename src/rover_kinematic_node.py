@@ -1,6 +1,5 @@
 #!/usr/bin/env python3.8
 
-from shapely.geometry.base import EMPTY
 import rospy
 import matplotlib.pyplot as plt
 import math
