@@ -58,12 +58,14 @@ roslaunch robot4ws_kinematics kinematics.launch
 * nodes:
     * rover_kinematic_node: This node contains the whole core of the kinematics of the four wheels steering rover
         * published topics:
-            * cmd_vel_motors
+            * /cmd_vel_motors
 
         * subscribed topics:
-            * cmd_vel
+            * /cmd_vel
+            * /kinematics_reset
 
         * services
+            * /kinematic_mode
 
 ## Requirements
 * ROS installation

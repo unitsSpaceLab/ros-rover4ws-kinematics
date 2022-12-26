@@ -15,6 +15,8 @@ from rover4ws_kinematics.src.modes.fullAckermann import FullAckermann
 from rover4ws_kinematics.src.modes.parallel_steer_ackermann import ParallelAckermann
 from rover4ws_kinematics.src.modes.parallelDrive import LateralDrive
 from rover4ws_kinematics.src.modes.pureInplaceRotation import InplaceRotation
+from rviz_visualizer import RvizVisualizer
+from threading import Thread
 
 
 
@@ -73,6 +75,7 @@ class RoverKinematicNode:
         self.last_cmd_pub_msg = Dynamixel_parameters1()
         self.last_cmd_vel_msg = Twist()
         self.current_mode = 'outer_ackermann'
+        self.visualizer = None
 
 
         self.controller_map = {
@@ -104,6 +107,9 @@ class RoverKinematicNode:
         self.cmd_pub_msg.Six_Primary = steers[1]
         self.cmd_pub_msg.Seven_Primary = steers[2]
         self.cmd_pub_msg.Eight_Primary = steers[0]
+    
+    def visualize(self):
+        self.visualizer = RvizVisualizer(self)
 
 
 
@@ -115,10 +121,16 @@ def main() -> None:
         node.cmd_publisher.publish(node.cmd_pub_msg)
         node.last_cmd_pub_msg = node.cmd_pub_msg
         if node.plot_trigger:
-            node.controller_map[node.current_mode].show(plot=True, show_frame=False, draw_wheels_arrows=False, draw_computed_wheel_lin_speed=True)
+            node.visualize()
+            t1 = Thread(target=node.visualizer.run)
+            t1.start()
+            #node.controller_map[node.current_mode].show(plot=True, show_frame=False, draw_wheels_arrows=False, draw_computed_wheel_lin_speed=True)
             node.plot_trigger = not node.plot_trigger
+
         #print(node.controller_map[node.current_mode]._current_wheel_speed)
         r.sleep()
+
+    t1.join()
 
 
 
