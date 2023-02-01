@@ -1,4 +1,6 @@
 <launch>
 <!-- start node -->
-<node pkg="robot4ws_kinematics" type="rover_kinematic_node.py" name="kinematics_node" respawn="false" output="screen"> </node>
+<node pkg="robot4ws_kinematics" type="rover_kinematic_node.py" name="kinematics_node" respawn="false" output="screen">
+    <remap from="/cmd_vel" to="/Archimede/cmd_vel"/>
+</node>
 </launch>

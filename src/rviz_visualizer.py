@@ -23,10 +23,11 @@ class RvizVisualizer:
         self.point_icr = Marker()
         self.feasible_icr_area = Marker()
 
-        self.points.header.frame_id = "Archimede_base_link"
-        self.lines_list.header.frame_id = "Archimede_base_link"
-        self.point_icr.header.frame_id = "Archimede_base_link"
-        self.feasible_icr_area.header.frame_id = "Archimede_base_link"
+        base_link = rospy.get_param("base_frame", "base_link")
+        self.points.header.frame_id = base_link
+        self.lines_list.header.frame_id = base_link
+        self.point_icr.header.frame_id = base_link
+        self.feasible_icr_area.header.frame_id = base_link
 
         self.points.action = Marker.ADD
         self.lines_list.action = Marker.ADD
@@ -107,7 +108,6 @@ class RvizVisualizer:
                 self.lines_list.points.append(p_n)
 
 
-
             pt_intersection_top = Point()
             pt_intersection_top.x = self.parent.controller_map[self.parent.current_mode]._icr_handler.data["intersections"]["top"][0][0]
             pt_intersection_top.y = self.parent.controller_map[self.parent.current_mode]._icr_handler.data["intersections"]["top"][1][0]
@@ -132,8 +132,9 @@ class RvizVisualizer:
             pt_bottom_2.y = pt_intersection_bottom.y + 10*self.parent.controller_map[self.parent.current_mode]._icr_handler.data["wheel_br"]["direction"][1]
 
             self.feasible_icr_area.points.append(pt_intersection_top)
-            self.feasible_icr_area.points.append(pt_top1)
+            
             self.feasible_icr_area.points.append(pt_top2)
+            self.feasible_icr_area.points.append(pt_top1)
             self.feasible_icr_area.points += [pt_intersection_bottom, pt_bottom_1, pt_bottom_2]
 
             self.marker_pub.publish(self.point_icr)
