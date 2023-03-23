@@ -1,3 +1,10 @@
+"""
+  @author Matteo Caruso
+  @email matteo.caruso@phd.units.it
+  @email matteo.caruso1993@gmail.com
+"""
+
+
 from visualization_msgs.msg import Marker
 from geometry_msgs.msg import Point
 import rospy

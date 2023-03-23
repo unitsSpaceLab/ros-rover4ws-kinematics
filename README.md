@@ -1,7 +1,5 @@
 # ros-rover4ws-kinematics
-A ROS package for the kinematics of a four wheel steering rover. This package use the python package you can find at the following repository https://github.com/matteocaruso1993/rover4ws-kinematics. In order to use this package you need to install it as a python package. Please follow the instructions reported in its README.
-
-
+A ROS package for the kinematics of a four wheel steering rover. This package use the python package you can find at the following [repository](https://github.com/matteocaruso1993/rover4ws-kinematics). In order to use this package you need to install it as a python package. Please follow the instructions reported in its README.
 
 
 ## Installation
@@ -47,7 +45,7 @@ pip install rospkg
 ```
 
 
-## How to use it
+## Basic usage
 ``` 
 source catkin_ws/devel/setup.bash
 source p38Env/bin/activate
@@ -63,12 +61,31 @@ roslaunch robot4ws_kinematics kinematics.launch
         * subscribed topics:
             * /cmd_vel
             * /kinematics_reset
+            * /plot
 
         * services
             * /kinematic_mode
+
+
+## Rviz visualization
+This package allows also the visualization of some entities in RViz. In order to proceed with the visualization, the steps are:
+
+1. open a terminal and execute the following:
+    ```roslaunch robot4ws_kinematics kinematics.launch```
+
+2. open a new terminal and execute the following>
+
+    ```
+    rostopic pub \plot std_msgs/Empty "{}" &
+    rviz
+    ```
+
 
 ## Requirements
 * ROS installation
 * python3.8
 * python package kinematics [repository](https://github.com/matteocaruso1993/rover4ws-kinematics)
+
+
+## Notes
 

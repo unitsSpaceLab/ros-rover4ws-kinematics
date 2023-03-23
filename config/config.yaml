@@ -1,3 +1,7 @@
+#  @author Matteo Caruso
+#  @email matteo.caruso@phd.units.it
+#  @email matteo.caruso1993@gmail.com
+
 base_frame: "Archimede_base_link"
 wheel_frame: "Archimede_fl_wheel"
 
