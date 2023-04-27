@@ -26,16 +26,16 @@ python3.8 -m venv p38Env
 Test now if the environment has been successfully created:
 
 ```
-source p38Env/bin/activate
+source ~/p38Env/bin/activate
 deactivate
 ```
 
 ### Installation of the requirements in the virtual environment
 ```
-source p38Env/bin/activate
+source ~/p38Env/bin/activate
 
-mkdir -p repositories/python
-cd repositories/python
+mkdir -p ~/repositories/python
+cd ~/repositories/python
 git clone https://github.com/matteocaruso1993/rover4ws-kinematics.git
 cd rover4ws-kinematics
 pip install -r requirements.txt
@@ -47,8 +47,8 @@ pip install rospkg
 
 ## Basic usage
 ``` 
-source catkin_ws/devel/setup.bash
-source p38Env/bin/activate
+source ~/catkin_ws/devel/setup.bash
+source ~/p38Env/bin/activate
 roslaunch robot4ws_kinematics kinematics.launch
 ```
 

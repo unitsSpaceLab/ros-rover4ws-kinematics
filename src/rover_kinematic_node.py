@@ -44,9 +44,12 @@ class RoverKinematicNode:
         rospy.loginfo('Starting RoverKinematicNode')
         self.node = rospy.init_node('rover_kinematics_node',anonymous=False)
         rospy.loginfo('rover_kinematics_node started')
-        
+
         # Get node parameters
         self._getParameters()
+   
+        # Reset kinematics controller
+        self.reset()
 
         # Initialize publisher
         self.cmd_publisher = rospy.Publisher('cmd_vel_motors', Dynamixel_parameters1, queue_size=10)
@@ -63,8 +66,6 @@ class RoverKinematicNode:
         # Start listener for tf
         self.updateGeometry()
 
-        # Reset kinematics controller
-        self.reset()
 
     def updateGeometry(self):
         base_frame = self._params["base_frame"]
@@ -142,7 +143,7 @@ class RoverKinematicNode:
         # Look for ROS parameters
         self._params['base_frame'] = rospy.get_param("base_frame", "base_link")
         self._params['wheel_frame'] = rospy.get_param("wheel_frame", "wheel_link")
-        self._params['drive_mode'] = rospy.get_param("drive_mode", 'Ackermann_symmetric')
+        self._params['drive_mode'] = rospy.get_param("drive_mode", 'symmetric_ackermann')
         self._params['max_wheel_speed'] = rospy.get_param("max_wheel_speed", 10)
         self._params['wheel_radius'] = rospy.get_param("wheel_radius", 0.085)
         self._params['wheel_width'] = rospy.get_param("wheel_width", 0.01)
