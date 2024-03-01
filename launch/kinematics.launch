@@ -6,8 +6,9 @@
  -->
 <launch>
 <!-- start node -->
+<arg name="env" default="/home/ros/p38Venv/bin/python3.8"/>
 <rosparam command="load" file="$(find robot4ws_kinematics)/config/config.yaml"/>
-<node pkg="robot4ws_kinematics" type="rover_kinematic_node.py" name="kinematics_node" respawn="false" output="screen">
+<node pkg="robot4ws_kinematics" type="rover_kinematic_node.py" name="kinematics_node" respawn="false" output="screen" launch-prefix="$(arg env)">
     <remap from="/cmd_vel" to="/Archimede/cmd_vel"/>
 </node>
 </launch>
