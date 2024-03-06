@@ -1,12 +1,12 @@
 # ros-rover4ws-kinematics
-A ROS package for the kinematics of a four wheel steering rover. This package use the python package you can find at the following [repository](https://github.com/matteocaruso1993/rover4ws-kinematics). In order to use this package you need to install it as a python package. Please follow the instructions reported in its README.
+A ROS package for the kinematics of a four wheel steering rover. This package use the python package you can find at the following [repository](https://github.com/unitsSpaceLab/rover4ws-kinematics). In order to use this package you need to install it as a python package. Please follow the instructions reported in its README.
 
 
 ## Installation
 ```
 mkdir -p catkin_ws/srcˆ
 cd catkin_ws/src
-git clone https://github.com/matteocaruso1993/ros-rover4ws-kinematics.git
+git clone https://github.com/unitsSpaceLab/ros-rover4ws-kinematics.git
 cd ..
 catkin_make
 ```
@@ -36,7 +36,7 @@ source ~/p38Env/bin/activate
 
 mkdir -p ~/repositories/python
 cd ~/repositories/python
-git clone https://github.com/matteocaruso1993/rover4ws-kinematics.git
+git clone https://github.com/unitsSpaceLab/rover4ws-kinematics.git
 cd rover4ws-kinematics
 pip install -r requirements.txt
 pip install -e .
@@ -84,7 +84,7 @@ This package allows also the visualization of some entities in RViz. In order to
 ## Requirements
 * ROS installation
 * python3.8
-* python package kinematics [repository](https://github.com/matteocaruso1993/rover4ws-kinematics)
+* python package kinematics [repository](https://github.com/unitsSpaceLab/rover4ws-kinematics)
 
 
 ## Notes
